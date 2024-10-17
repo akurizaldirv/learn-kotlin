@@ -49,34 +49,76 @@ fun main() {
 //    } else {
 //        println("You are over timed employee -> $workingHour")
 //    }
+//
+//    // number data types
+//    val intNumber: Int = 120 // 32 bit
+//    val shortNumber: Short = 321 // 16 bit
+//    val byteNumber: Byte = 127 // 8 bit
+//    val longNumber: Long = 127000000L // 64 bit
+//
+//    println(intNumber.dec()) // decrement (-1) without assign it to it's variable
+//    println(shortNumber.inc()) // decrement (+1) without assign it to it's variable
+//    println(shortNumber)
+//    println(longNumber.inv())  // invert /  multiply by -1
+//    println(byteNumber.div(2)) // divide and throw the number after comma away
+//    println(intNumber.compareTo(10)) // result 1 if intNumber is higher than 10
+//    println(intNumber.compareTo(120)) // result 0 if intNumber is equal with 120
+//    println(intNumber.compareTo(130)) // result -1 if intNumber is lower than 130
+//    println(Int.MAX_VALUE)
+//    println(Int.MIN_VALUE)
+//
+//    // decimal data types
+//    val floatNumber: Float = 127F // decimal with 32 bit - with suffix F
+//    val floatNumber2: Float = 127.1234567890F // only 5 digits after comma
+//    val doubleNumber: Double = 19999999.0 // decimal with 64 bit - can accept 16 digits after comma
+//    println(floatNumber.minus(2))
+//    println(floatNumber)
+//    println(floatNumber2) // 127.12346
+//    println(floatNumber.plus(2.0))
+//    println(doubleNumber.rem(2))
+//    println(doubleNumber.times(3))
 
-    // number data types
-    val intNumber: Int = 120 // 32 bit
-    val shortNumber: Short = 321 // 16 bit
-    val byteNumber: Byte = 127 // 8 bit
-    val longNumber: Long = 127000000L // 64 bit
+    // array
+    val mixArrays = arrayOf(0, 2, 3, 4, 5.001F, 6.1239, "asd", true, null)
+    for (num in mixArrays) {
+        print("$num ")
+    }
+    println(mixArrays) //  printing hashcode (reference)
 
-    println(intNumber.dec()) // decrement (-1) without assign it to it's variable
-    println(shortNumber.inc()) // decrement (+1) without assign it to it's variable
-    println(shortNumber)
-    println(longNumber.inv())  // invert /  multiply by -1
-    println(byteNumber.div(2)) // divide and throw the number after comma away
-    println(intNumber.compareTo(10)) // result 1 if intNumber is higher than 10
-    println(intNumber.compareTo(120)) // result 0 if intNumber is equal with 120
-    println(intNumber.compareTo(130)) // result -1 if intNumber is lower than 130
-    println(Int.MAX_VALUE)
-    println(Int.MIN_VALUE)
+    val numbers = intArrayOf(1,2,3,4,5)
+    for (num in numbers) {
+        print("${num.times(2)} ")
+    }
+    println(numbers) // printing hashcode (reference)
 
-    // decimal data types
-    val floatNumber: Float = 127F // decimal with 32 bit - with suffix F
-    val floatNumber2: Float = 127.1234567890F // only 5 digits after comma
-    val doubleNumber: Double = 19999999.0 // decimal with 64 bit - can accept 16 digits after comma
-    println(floatNumber.minus(2))
-    println(floatNumber)
-    println(floatNumber2) // 127.12346
-    println(floatNumber.plus(2.0))
-    println(doubleNumber.rem(2))
-    println(doubleNumber.times(3))
+    // this way only copy the reference
+    val ondNumbers = numbers
+    println(numbers)
+    println(ondNumbers)
 
+    ondNumbers[0] = 2 // this way assign array numbers also cause they have the same reference
+
+
+    println("numbers length: $numbers.size")
+    println("numbers[2]: ${numbers.get(2)}")
+
+    // copy by value
+    val newNumbers = numbers.clone()
+    newNumbers.set(2, 100)
+
+    for (num in numbers) {
+        print("$num ")
+    }
+    println()
+
+    for (num in ondNumbers) {
+        print("$num ")
+    }
+    println()
+
+    for (num in newNumbers) {
+        print("$num ")
+    }
+    println()
 
 }
