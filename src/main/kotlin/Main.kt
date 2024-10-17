@@ -130,12 +130,52 @@ fun main() {
 //    println(nullType.isNullOrEmpty()) // true
 //    println(nullType2.isNullOrEmpty()) // false
 
-    // safe call
-    val nullString: String? = null
-    val nullNumber: Int? = nullString?.length // null, cause nullString is null .length is not executed
-    println(nullNumber)
+//    // safe call
+//    val nullString: String? = null
+//    val nullNumber: Int? = nullString?.length // null, cause nullString is null .length is not executed
+//    println(nullNumber)
+//
+//    // itenerary
+//    val textLength = nullString?.length ?: 0
+//    println(textLength)
 
-    // itenerary
-    val textLength = nullString?.length ?: 0
-    println(textLength)
+    // function
+    println(sumIntArray(arrayOf(1,2,3,4,232,32,32,3,23)))
+    println(meanIntArray(arrayOf(1,2,3,4,232,32,32,3,23)))
+    printHello("Budi")
+    printNameAge("Aldo", 21)
+    // named parameter function call
+    // named param ignore the sequence
+    printNameAge(age = 20, name = "Jovi")
+    // use default value
+    printNameAge(age = 23)
+    // vararg call - receive any length of parameter
+    // cannot using named parameter
+    printNameAndGrade("Etrama", 90, 80, 70, 23, 80)
+    printNameAndGrade( "John", 70, 23, 80)
+    printNameAndGrade( "Choppy")
+}
+
+// return function
+fun meanIntArray(data: Array<Int>): Int {
+    return data.sum()/data.size
+}
+
+// one line function
+fun sumIntArray(data: Array<Int>): Int = data.sum()
+
+// Unit function - not return anything
+fun printHello(name:String): Unit {
+    println("Hello $name")
+}
+
+// Unit function without return declaration to avoid redundancy
+// assign default value, so if the function called without adding parameter there is a defualt value
+fun printNameAge(name: String = "Fulan", age: Int) {
+    println("$name is $age")
+}
+
+// vararg - it is a  syntax to get special ability receive unlimited parameters
+fun printNameAndGrade(name: String, vararg grade: Int = intArrayOf(0)) {
+    println("$name = ${grade.sum()}")
 }
