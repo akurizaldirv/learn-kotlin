@@ -77,48 +77,57 @@ fun main() {
 //    println(floatNumber.plus(2.0))
 //    println(doubleNumber.rem(2))
 //    println(doubleNumber.times(3))
+//
+//    // array
+//    val mixArrays = arrayOf(0, 2, 3, 4, 5.001F, 6.1239, "asd", true, null)
+//    for (num in mixArrays) {
+//        print("$num ")
+//    }
+//    println(mixArrays) //  printing hashcode (reference)
+//
+//    val numbers = intArrayOf(1,2,3,4,5)
+//    for (num in numbers) {
+//        print("${num.times(2)} ")
+//    }
+//    println(numbers) // printing hashcode (reference)
+//
+//    // this way only copy the reference
+//    val ondNumbers = numbers
+//    println(numbers)
+//    println(ondNumbers)
+//
+//    ondNumbers[0] = 2 // this way assign array numbers also cause they have the same reference
+//
+//
+//    println("numbers length: $numbers.size")
+//    println("numbers[2]: ${numbers.get(2)}")
+//
+//    // copy by value
+//    val newNumbers = numbers.clone()
+//    newNumbers.set(2, 100)
+//
+//    for (num in numbers) {
+//        print("$num ")
+//    }
+//    println()
+//
+//    for (num in ondNumbers) {
+//        print("$num ")
+//    }
+//    println()
+//
+//    for (num in newNumbers) {
+//        print("$num ")
+//    }
+//    println()
 
-    // array
-    val mixArrays = arrayOf(0, 2, 3, 4, 5.001F, 6.1239, "asd", true, null)
-    for (num in mixArrays) {
-        print("$num ")
-    }
-    println(mixArrays) //  printing hashcode (reference)
-
-    val numbers = intArrayOf(1,2,3,4,5)
-    for (num in numbers) {
-        print("${num.times(2)} ")
-    }
-    println(numbers) // printing hashcode (reference)
-
-    // this way only copy the reference
-    val ondNumbers = numbers
-    println(numbers)
-    println(ondNumbers)
-
-    ondNumbers[0] = 2 // this way assign array numbers also cause they have the same reference
-
-
-    println("numbers length: $numbers.size")
-    println("numbers[2]: ${numbers.get(2)}")
-
-    // copy by value
-    val newNumbers = numbers.clone()
-    newNumbers.set(2, 100)
-
-    for (num in numbers) {
-        print("$num ")
-    }
-    println()
-
-    for (num in ondNumbers) {
-        print("$num ")
-    }
-    println()
-
-    for (num in newNumbers) {
-        print("$num ")
-    }
-    println()
+    // nullable
+//    val notNullType: String = null // null pointer exception
+    val nullType: String? = ""
+    val nullType2: String? = "     " // the spaces string will return false if checked using .isNullOrEmpty
+    println(nullType.isNullOrBlank())
+    println(nullType2.isNullOrBlank())
+    println(nullType.isNullOrEmpty()) // true
+    println(nullType2.isNullOrEmpty()) // false
 
 }
