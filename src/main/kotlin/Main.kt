@@ -123,11 +123,19 @@ fun main() {
 
     // nullable
 //    val notNullType: String = null // null pointer exception
-    val nullType: String? = ""
-    val nullType2: String? = "     " // the spaces string will return false if checked using .isNullOrEmpty
-    println(nullType.isNullOrBlank())
-    println(nullType2.isNullOrBlank())
-    println(nullType.isNullOrEmpty()) // true
-    println(nullType2.isNullOrEmpty()) // false
+//    val nullType: String? = ""
+//    val nullType2: String? = "     " // the spaces string will return false if checked using .isNullOrEmpty
+//    println(nullType.isNullOrBlank())
+//    println(nullType2.isNullOrBlank())
+//    println(nullType.isNullOrEmpty()) // true
+//    println(nullType2.isNullOrEmpty()) // false
 
+    // safe call
+    val nullString: String? = null
+    val nullNumber: Int? = nullString?.length // null, cause nullString is null .length is not executed
+    println(nullNumber)
+
+    // itenerary
+    val textLength = nullString?.length ?: 0
+    println(textLength)
 }
