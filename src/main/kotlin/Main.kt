@@ -5,177 +5,81 @@ import kotlin.random.Random
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-//    var character: Char = 'A'
-//    println(character)
-//    println(++character) // incrementing character unicode and print
-//
-//    println("\n")
-//
-//    // string indexing
-//    val i = 2
-//    val text = "Hello World!"
-//    val third = text[3]
-//
-//    println("The third letter of $text is $third")
-//    for (i in text) {
-//        println(i)
+    // control flow
+    val clock = Random.nextInt(1, 10)
+
+    // statement control flow
+    if (clock < 8) {
+        println("Still on working hour")
+    } else {
+        println("Off working hour")
+    }
+
+    // expression control flow
+    var msg = if (clock < 8) "Still on working hour" else "Off working hour"
+    println("$clock : $msg")
+
+    // when condition (switch case)
+    val grade = 'A'
+    when(grade){
+        'A' -> println("Excellent")
+        'B' -> println("Good")
+        'C' -> println("Go f urself")
+    }
+
+//    // while loop
+//    var counter = 1
+//    while (counter < 5) {
+//        println("Hello, World")
+//        println(++counter)
 //    }
 //
-//    // escaped string
-//    println("This is how to write \"Hello World!\" with string")
-//
-//    println()
-//    println("""
-//        this is raw string
-//        the indentation
-//        is still here
-//    """)
-//
-//    println("""
-//        this is raw string
-//        without
-//        the indentation
-//    """.trimIndent())
+//    // do loop
+//    var next = 1
+//    do {
+//        println("Hello Again, random: $next")
+//        next = Random.nextInt(0, 10)
+//    } while (next != 1)
 
-//    // string template
-//    val workingHour = Random.nextInt(1, 10)
-////    println("You have ${if (workingHour > 8) "overtime" else "normal"} working hour -> $workingHour")
-//
-//    // control flow
-//    if (workingHour in 5 .. 8) {
-//        println("You have ideal working hour -> $workingHour")
-//    } else if (workingHour < 5) {
-//        println("You are part time employee -> $workingHour")
-//    } else {
-//        println("You are over timed employee -> $workingHour")
-//    }
-//
-//    // number data types
-//    val intNumber: Int = 120 // 32 bit
-//    val shortNumber: Short = 321 // 16 bit
-//    val byteNumber: Byte = 127 // 8 bit
-//    val longNumber: Long = 127000000L // 64 bit
-//
-//    println(intNumber.dec()) // decrement (-1) without assign it to it's variable
-//    println(shortNumber.inc()) // decrement (+1) without assign it to it's variable
-//    println(shortNumber)
-//    println(longNumber.inv())  // invert /  multiply by -1
-//    println(byteNumber.div(2)) // divide and throw the number after comma away
-//    println(intNumber.compareTo(10)) // result 1 if intNumber is higher than 10
-//    println(intNumber.compareTo(120)) // result 0 if intNumber is equal with 120
-//    println(intNumber.compareTo(130)) // result -1 if intNumber is lower than 130
-//    println(Int.MAX_VALUE)
-//    println(Int.MIN_VALUE)
-//
-//    // decimal data types
-//    val floatNumber: Float = 127F // decimal with 32 bit - with suffix F
-//    val floatNumber2: Float = 127.1234567890F // only 5 digits after comma
-//    val doubleNumber: Double = 19999999.0 // decimal with 64 bit - can accept 16 digits after comma
-//    println(floatNumber.minus(2))
-//    println(floatNumber)
-//    println(floatNumber2) // 127.12346
-//    println(floatNumber.plus(2.0))
-//    println(doubleNumber.rem(2))
-//    println(doubleNumber.times(3))
-//
-//    // array
-//    val mixArrays = arrayOf(0, 2, 3, 4, 5.001F, 6.1239, "asd", true, null)
-//    for (num in mixArrays) {
-//        print("$num ")
-//    }
-//    println(mixArrays) //  printing hashcode (reference)
-//
-//    val numbers = intArrayOf(1,2,3,4,5)
-//    for (num in numbers) {
-//        print("${num.times(2)} ")
-//    }
-//    println(numbers) // printing hashcode (reference)
-//
-//    // this way only copy the reference
-//    val ondNumbers = numbers
-//    println(numbers)
-//    println(ondNumbers)
-//
-//    ondNumbers[0] = 2 // this way assign array numbers also cause they have the same reference
-//
-//
-//    println("numbers length: $numbers.size")
-//    println("numbers[2]: ${numbers.get(2)}")
-//
-//    // copy by value
-//    val newNumbers = numbers.clone()
-//    newNumbers.set(2, 100)
-//
-//    for (num in numbers) {
-//        print("$num ")
-//    }
-//    println()
-//
-//    for (num in ondNumbers) {
-//        print("$num ")
-//    }
-//    println()
-//
-//    for (num in newNumbers) {
-//        print("$num ")
-//    }
-//    println()
+    // range
+    val intRange = 1..5
+    println(intRange) // 1..5
+    println(intRange.step)
 
-    // nullable
-//    val notNullType: String = null // null pointer exception
-//    val nullType: String? = ""
-//    val nullType2: String? = "     " // the spaces string will return false if checked using .isNullOrEmpty
-//    println(nullType.isNullOrBlank())
-//    println(nullType2.isNullOrBlank())
-//    println(nullType.isNullOrEmpty()) // true
-//    println(nullType2.isNullOrEmpty()) // false
+    val intRange2 = 1.rangeTo(10)
+    println(intRange2) // 1..10
 
-//    // safe call
-//    val nullString: String? = null
-//    val nullNumber: Int? = nullString?.length // null, cause nullString is null .length is not executed
-//    println(nullNumber)
-//
-//    // itenerary
-//    val textLength = nullString?.length ?: 0
-//    println(textLength)
+    val intRange3 = 10.downTo(1)
+    println(intRange3) // 10..1
 
-    // function
-    println(sumIntArray(arrayOf(1,2,3,4,232,32,32,3,23)))
-    println(meanIntArray(arrayOf(1,2,3,4,232,32,32,3,23)))
-    printHello("Budi")
-    printNameAge("Aldo", 21)
-    // named parameter function call
-    // named param ignore the sequence
-    printNameAge(age = 20, name = "Jovi")
-    // use default value
-    printNameAge(age = 23)
-    // vararg call - receive any length of parameter
-    // cannot using named parameter
-    printNameAndGrade("Etrama", 90, 80, 70, 23, 80)
-    printNameAndGrade( "John", 70, 23, 80)
-    printNameAndGrade( "Choppy")
-}
+    val charRange = 'A'.rangeTo('G')
+    println(5 in intRange3) // true // checking the value is in range
+    println('C' !in charRange)  // false // checking the value is not in range
 
-// return function
-fun meanIntArray(data: Array<Int>): Int {
-    return data.sum()/data.size
-}
+    // loop
+    val ranges = 1 .. 5 // only accept char range and int range
+    for (i in ranges) {
+        print(i)
+        for (c in (if (i % 2== 0) charRange else charRange.reversed())) {
+            print(" $c")
+        }
+        println()
+    }
 
-// one line function
-fun sumIntArray(data: Array<Int>): Int = data.sum()
+    println()
 
-// Unit function - not return anything
-fun printHello(name:String): Unit {
-    println("Hello $name")
-}
+    for (i in ranges) {
+        if (i % 2 == 0) {
+            continue
+        }
+        print("$i ")
+    }
 
-// Unit function without return declaration to avoid redundancy
-// assign default value, so if the function called without adding parameter there is a defualt value
-fun printNameAge(name: String = "Fulan", age: Int) {
-    println("$name is $age")
-}
-
-// vararg - it is a  syntax to get special ability receive unlimited parameters
-fun printNameAndGrade(name: String, vararg grade: Int = intArrayOf(0)) {
-    println("$name = ${grade.sum()}")
+    println()
+    for (i in ranges) {
+        when (i) {
+            in 4 .. 5 -> break
+            1, 2, 3 -> println("$i")
+        }
+    }
 }
