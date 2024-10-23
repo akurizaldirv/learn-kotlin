@@ -10,6 +10,7 @@ class Animal {
     var weight: Double = 3.2
     var age: Int = 2
     var isMammal: Boolean = true
+    var motherName: String by DelegateName()
 
     fun eat() {
         println("$name is eating")
