@@ -1,16 +1,12 @@
 package xyz.zaldev
 
 class Animal {
-    var name: String = "Kucing"
-        get() = field
-        set(value) {
-            field = value
-        }
+    var name: String by DelegateGenericClass("Default")
 
-    var weight: Double = 3.2
-    var age: Int = 2
-    var isMammal: Boolean = true
-    var motherName: String by DelegateName()
+    var weight: Double by DelegateGenericClass(0.0)
+    var age: Int by DelegateGenericClass(0)
+    var isMammal: Boolean by DelegateGenericClass(false)
+    var motherName: String by DelegateGenericClass("Default")
 
     fun eat() {
         println("$name is eating")
