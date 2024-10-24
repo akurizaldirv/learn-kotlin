@@ -7,7 +7,7 @@ class Plant (private var name: String, private var family: String, private var d
         this.name = name
         this.family = family
         this.description = description
-        this.height = if (height!! > 0) height else 0 // height!! = is not null
+        this.height = if (height != null) if (height!! > 0) height else 0 else 0 // height!! = is not null
         this.isExtinct = false
     }
 
@@ -21,4 +21,10 @@ class Plant (private var name: String, private var family: String, private var d
     constructor(name: String, family: String, isExtinct: Boolean) : this(name, family, description = null, height = null) {
         this.isExtinct = false
     }
+
+    override fun toString(): String {
+        return "Plant(name='$name', family='$family', description=$description, height=$height, isExtinct=$isExtinct)"
+    }
+
+
 }

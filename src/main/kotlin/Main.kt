@@ -36,16 +36,27 @@ fun main() {
 //    println(kucing)
 
     // primary constructor
-    val toyota: Car = Car("Toyota Supra", 12000.0, "Gasoline")
-    val mazda: Car = Car("Mazda RX8", fuel = "Electric", price = -12000.0) // named init
+//    val toyota: Car = Car("Toyota Supra", 12000.0, "Gasoline")
+//    val mazda: Car = Car("Mazda RX8", fuel = "Electric", price = -12000.0) // named init
+//
+//    println(toyota)
+//    toyota.name = "Toyota Supra 2024"
+//    toyota.start()
+//    toyota.stop()
+//    println(toyota)
+//
+//    println(mazda)
 
-    println(toyota)
-    toyota.name = "Toyota Supra 2024"
-    toyota.start()
-    toyota.stop()
-    println(toyota)
 
-    println(mazda)
+    // instantiate using 3 different constructors
+    val ganggang: Plant = Plant("Ganggang", "Algae", "Lorem ipsum", 1, false)
+    println(ganggang)
+
+    val mangga: Plant = Plant(family = "Tree", name = "Mango", isExtinct = true)
+    println(mangga)
+
+    val kamboja: Plant = Plant("Kamboja", "Algae", "Lorem ipsum", 1)
+    println(kamboja)
 
 
 
