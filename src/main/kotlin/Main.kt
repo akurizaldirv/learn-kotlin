@@ -48,21 +48,28 @@ fun main() {
 //    println(mazda)
 
 
-    // instantiate using 3 different constructors
-    val ganggang: Plant = Plant("Ganggang", "Algae", "Lorem ipsum", 1, false)
-    println(ganggang)
+//    // instantiate using 3 different constructors
+//    val ganggang: Plant = Plant("Ganggang", "Algae", "Lorem ipsum", 1, false)
+//    println(ganggang)
+//
+//    val mangga: Plant = Plant(family = "Tree", name = "Mango", isExtinct = true)
+//    println(mangga)
+//
+//    val kamboja: Plant = Plant("Kamboja", "Algae", "Lorem ipsum", 1)
+//    println(kamboja)
+//    kamboja.setName("Kamboja X21")
+//    println(kamboja.getName())
+//
+//    kamboja.grow()
+//    kamboja.grow(5)
+//
+//    kamboja.cut("Bono", 4)
+//    kamboja.cut(2, "Budi")
 
-    val mangga: Plant = Plant(family = "Tree", name = "Mango", isExtinct = true)
-    println(mangga)
+    // inheritance ---
+    val manager = ManajerEmpl("Muklis", 30000000L)
+    val staff = StaffEmpl("Aigo", 5000000L)
+    println(manager)
+    println(staff)
 
-    val kamboja: Plant = Plant("Kamboja", "Algae", "Lorem ipsum", 1)
-    println(kamboja)
-    kamboja.setName("Kamboja X21")
-    println(kamboja.getName())
-
-    kamboja.grow()
-    kamboja.grow(5)
-
-    kamboja.cut("Bono", 4)
-    kamboja.cut(2, "Budi")
 }
