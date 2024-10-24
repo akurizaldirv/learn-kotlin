@@ -23,17 +23,31 @@ val umur: Int by lazy {
 
 fun main() {
 //    // object
-    var kucing = Animal()
-    kucing.eat()
-    println(kucing.name)
-    kucing.name = "Bono"
-    println(kucing.name)
-    println(kucing.age)
-    kucing.age = 20
-    println(kucing.age)
-    kucing.motherName = "Sumiati"
-    println(kucing.motherName)
-    println(kucing)
+//    var kucing = Animal()
+//    kucing.eat()
+//    println(kucing.name)
+//    kucing.name = "Bono"
+//    println(kucing.name)
+//    println(kucing.age)
+//    kucing.age = 20
+//    println(kucing.age)
+//    kucing.motherName = "Sumiati"
+//    println(kucing.motherName)
+//    println(kucing)
+
+    // primary constructor
+    val toyota: Car = Car("Toyota Supra", 12000.0, "Gasoline")
+    val mazda: Car = Car("Mazda RX8", fuel = "Electric", price = -12000.0) // named init
+
+    println(toyota)
+    toyota.name = "Toyota Supra 2024"
+    toyota.start()
+    toyota.stop()
+    println(toyota)
+
+    println(mazda)
+
+
 
 
 //    if (::nama.isInitialized) {
