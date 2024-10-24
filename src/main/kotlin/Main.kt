@@ -21,6 +21,29 @@ val umur: Int by lazy {
 // the lazy init variable will not initialized until it's necessary to use
 // lazy should be out of class and using 'val'
 
+// extension
+// function extension --- add method to class without instantiate the real class
+fun Employee.die() {
+    println("${this.employeeName} is dying ...")
+}
+
+// properties extension --- add new properties to class without instantiate the real class
+val Employee.bill: Double
+    get() = this.employeeSalary * 0.1
+
+// infix extension
+// Namun, ada beberapa syarat untuk menggunakan infix function.
+// - Infix function harus merupakan sebuah member function atau extension function.
+// - Harus memiliki satu parameter saja.
+// - Parameter tidak boleh berupa generic dan tidak memiliki nilai default.
+infix fun Int.sumTenDeret(num: Int): Int {
+    var total = 0
+    for (i in 1..10) {
+        total += num * i
+    }
+    return total
+}
+
 fun main() {
 //    // object
 //    var kucing = Animal()
@@ -74,5 +97,10 @@ fun main() {
     manager.workingHour = 20
     println(manager)
     println(staff)
+    println(staff.die())
+    println(staff.bill)
+
+    // infix extension using
+    println(5 sumTenDeret 3)
 
 }
