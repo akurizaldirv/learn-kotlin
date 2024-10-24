@@ -57,15 +57,6 @@ fun main() {
 
     val kamboja: Plant = Plant("Kamboja", "Algae", "Lorem ipsum", 1)
     println(kamboja)
-
-
-
-
-//    if (::nama.isInitialized) {
-//        println(nama)
-//    } else {
-////        // not initialized yet and get the error
-////        // println(nama) // .Uninitialized Property Access Exception
-//        println("Not Initialized")
-//    }
+    kamboja.setName("Kamboja X21")
+    println(kamboja.getName())
 }

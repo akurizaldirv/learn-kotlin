@@ -26,5 +26,34 @@ class Plant (private var name: String, private var family: String, private var d
         return "Plant(name='$name', family='$family', description=$description, height=$height, isExtinct=$isExtinct)"
     }
 
+    // getter and setter for encapsulation
+    fun getName() : String = this.name
+    fun setName(name: String) {
+        this.name = name
+    }
+
+    fun getFamily() : String = this.family
+    fun setFamily(family: String) {
+        this.family = family
+    }
+
+    fun getDescription() : String? = this.description
+    fun setDescription(description: String) {
+        this.description = description
+    }
+
+    fun getIsExtinct (): Boolean = this.isExtinct
+    fun setIsExtinct(isExtinct : Boolean) {
+        this.isExtinct = isExtinct
+    }
+
+    fun getHeight() : Int? = this.height
+    fun setHeight(height: Int?) {
+        this.height = height
+    }
+
+
+
+
 
 }
