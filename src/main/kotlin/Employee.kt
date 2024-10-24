@@ -1,28 +1,32 @@
 package xyz.zaldev
 
-open class Employee(protected var name: String, protected var salary: Long) {
-    fun getName(): String = this.name
-    fun setName(name: String) {
-        this.name = name
-    }
+import xyz.zaldev.interfaces.IWork
 
-    fun getSalary(): Long = this.salary
-    fun setSalary(salary: Long) {
-        this.salary = salary
-    }
-//    var employeeName: String
-//        get() = name
-//        set(value) {
-//            name = value
-//        }
+abstract class Employee(protected var name: String, protected var salary: Long) : IWork {
+//    fun getName(): String = this.name
+//    fun setName(name: String) {
+//        this.name = name
+//    }
 //
-//    var employeeSalary: Long
-//        get() = salary
-//        set(value) {
-//            salary = value
-//        }
+//    fun getSalary(): Long = this.salary
+//    fun setSalary(salary: Long) {
+//        this.salary = salary
+//    }
+    override var workingHour: Int = 8
 
-    open fun work() {
+    var employeeName: String
+        get() = name
+        set(value) {
+            name = value
+        }
+
+    var employeeSalary: Long
+        get() = salary
+        set(value) {
+            salary = value
+        }
+
+    override fun work() {
         println("${this.name} is working ...")
     }
 
@@ -31,8 +35,6 @@ open class Employee(protected var name: String, protected var salary: Long) {
     }
 
     override fun toString(): String {
-        return "Employee(name='$name', salary=$salary)"
+        return "Employee(name = $name, employeeSalary = $salary, working = $workingHour)"
     }
-
-
 }

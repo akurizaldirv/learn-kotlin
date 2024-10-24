@@ -69,6 +69,9 @@ fun main() {
     // inheritance ---
     val manager = ManajerEmpl("Muklis", 30000000L)
     val staff = StaffEmpl("Aigo", 5000000L)
+
+    // val animalError = Employee("asd", 1000L) // ---since it's abstract, the class cannot instantiated
+    manager.workingHour = 20
     println(manager)
     println(staff)
 
