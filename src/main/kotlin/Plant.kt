@@ -52,7 +52,26 @@ class Plant (private var name: String, private var family: String, private var d
         this.height = height
     }
 
+    // overloading
+    // two function with same name and different parameter
+    // recommended --- the parameters clear
+    fun grow() {
+        println("$name is growing...")
+    }
 
+    fun grow(addHeight: Int) {
+        println("$name is growing by $addHeight cm...")
+    }
+
+    // not recommended --- ambiguous
+    // when using named parameter can make error
+    fun cut(name: String, height: Int) {
+        println("$name is cutting $height cm of ${this.name}...")
+    }
+
+    fun cut(height: Int, name: String) {
+        println("$name is cutting ${this.name} by $height cm...")
+    }
 
 
 

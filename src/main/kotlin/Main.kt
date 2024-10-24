@@ -59,4 +59,10 @@ fun main() {
     println(kamboja)
     kamboja.setName("Kamboja X21")
     println(kamboja.getName())
+
+    kamboja.grow()
+    kamboja.grow(5)
+
+    kamboja.cut("Bono", 4)
+    kamboja.cut(2, "Budi")
 }
