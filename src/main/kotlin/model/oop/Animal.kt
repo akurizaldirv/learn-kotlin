@@ -1,4 +1,4 @@
-package xyz.zaldev
+package xyz.zaldev.model.oop
 
 class Animal {
     var name: String by DelegateGenericClass("Default")

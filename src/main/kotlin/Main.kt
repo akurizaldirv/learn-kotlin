@@ -1,12 +1,12 @@
 package xyz.zaldev
 
-import kotlin.random.Random
+import xyz.zaldev.model.data.User
+import xyz.zaldev.model.data.UserData
+import xyz.zaldev.model.oop.Employee
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 //
-
-
 
 
 lateinit var nama: String
@@ -106,41 +106,67 @@ fun main() {
 //
 //    // infix extension using
 //    println(5 sumTenDeret 3)
+////
+//    // error handling
+//    val nullVal: String? = null
+//    var intVal: Int = 0
+//    var notNullVal: String = ""
 //
-    // error handling
-    val nullVal: String? = null
-    var intVal: Int = 0
-    var notNullVal: String = ""
+//    try {
+//        intVal = nullVal!!.toInt()
+//    } catch (e: NullPointerException) {
+//        intVal = 0
+//    } catch (e: NumberFormatException) {
+//        intVal = -1
+//    } finally {
+//        when (intVal) {
+//            -1 -> println("Catch by NumberFormatException")
+//            0 -> println("Catch by NullPointerException")
+//            else -> println(intVal)
+//        }
+//    }
+//
+//    println()
+//    try {
+//        notNullVal = nullVal ?: ""
+//        if (notNullVal == "") {
+//            throw NullPointerException("Null Wooy")
+//        }
+//    } catch (e: Exception) {
+//        notNullVal = "nullVal"
+//        println(e.message)
+//        println(e.localizedMessage)
+//        println(e.cause)
+//        println(e.suppressed)
+//        println(e.stackTrace)
+//    } finally {
+//        println("Eror: --- " + notNullVal)
+//    }
 
-    try {
-        intVal = nullVal!!.toInt()
-    } catch (e: NullPointerException) {
-        intVal = 0
-    } catch (e: NumberFormatException) {
-        intVal = -1
-    } finally {
-        when (intVal) {
-            -1 -> println("Catch by NumberFormatException")
-            0 -> println("Catch by NullPointerException")
-            else -> println(intVal)
-        }
-    }
+    var user1 = User("Doni", 24)
+    var userData1 = UserData("Aldo", 22)
 
-    println()
-    try {
-        notNullVal = nullVal ?: ""
-        if (notNullVal == "") {
-            throw NullPointerException("Null Wooy")
-        }
-    } catch (e: Exception) {
-        notNullVal = "nullVal"
-        println(e.message)
-        println(e.localizedMessage)
-        println(e.cause)
-        println(e.suppressed)
-        println(e.stackTrace)
-    } finally {
-        println("Eror: --- " + notNullVal)
-    }
+    var user2 = User("Doni", 24)
+    var userData2 = UserData(age = 22, name = "Aldo")
 
+    // copy
+    var userData3 = userData2.copy()
+
+    println(user1) // default -> show object reference
+    println(userData1) // default -> show data
+
+    println(user1.hashCode()) // default -> hashcode
+    println(userData1.hashCode()) // default -> show data
+
+    println(user1.equals(user2)) // false -> compare hashcode
+    println(userData1.equals(userData3)) // true -> compare data
+
+    userData3.name = "Bukan Aldo"
+    println(userData3.equals(userData2))
+
+    // component N (n is an index to access the properties in data class depends on property order)
+    var name = userData2.component1()
+    var age = userData2.component2()
+    userData2.intro()
+    println("Hello, my name is $name, and i am $age years old")
 }

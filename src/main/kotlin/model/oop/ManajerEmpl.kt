@@ -1,4 +1,4 @@
-package xyz.zaldev
+package xyz.zaldev.model.oop
 
 class ManajerEmpl(pName: String, pSalary: Long, workingHour: Int = 8): Employee(salary = pSalary, name = pName) {
     override fun work() {

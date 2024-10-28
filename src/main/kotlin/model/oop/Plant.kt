@@ -1,4 +1,4 @@
-package xyz.zaldev
+package xyz.zaldev.model.oop
 
 class Plant (private var name: String, private var family: String, private var description: String?, private var height: Int?) {
     private var isExtinct: Boolean

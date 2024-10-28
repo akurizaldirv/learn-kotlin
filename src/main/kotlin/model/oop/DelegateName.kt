@@ -1,4 +1,4 @@
-package xyz.zaldev
+package xyz.zaldev.model.oop
 
 import kotlin.reflect.KProperty
 

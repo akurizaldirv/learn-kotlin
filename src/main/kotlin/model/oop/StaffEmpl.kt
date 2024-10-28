@@ -1,4 +1,4 @@
-package xyz.zaldev
+package xyz.zaldev.model.oop
 
 class StaffEmpl(var pName: String, var pSalary: Long, workingHour: Int = 8) : Employee(pName, pSalary)  {
     fun overtime(time: Int) {
