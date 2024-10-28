@@ -1,5 +1,8 @@
 package xyz.zaldev
 
+import xyz.zaldev.model.CentralLibrary
+import xyz.zaldev.model.Database
+import xyz.zaldev.model.MyLibrary
 import xyz.zaldev.model.data.House
 import xyz.zaldev.model.data.User
 import xyz.zaldev.model.data.UserData
@@ -48,9 +51,9 @@ infix fun Int.sumTenDeret(num: Int): Int {
 }
 
 fun main() {
-
-    var bebas = println("Bebas")
-    println(bebas)
+//
+//    var bebas = println("Bebas")
+//    println(bebas)
 
 //    // object
 //    var kucing = Animal()
@@ -202,17 +205,61 @@ fun main() {
 //    println(cBlue.hexCode) // 0x0000FF
 //    println(cBlue.ordinal) // 2 -> order index start from 0
 //    cBlue.printValue()
+//
+//    // sealed class
+//    var result1: Result = Result.Success(listOf(1,2,3,4))
+//    var result2: Result = Result.Error("Cannot fetch data")
+//
+//    println(result1)
+//    println(result2)
+//
+//    printResultPrompt(result1)
+//    printResultPrompt(result2)
 
-    // sealed class
-    var result1: Result = Result.Success(listOf(1,2,3,4))
-    var result2: Result = Result.Error("Cannot fetch data")
 
-    println(result1)
-    println(result2)
+    // singleton -- the object created only once
+    CentralLibrary.borrowBook(20)
+    Database.connect()
 
-    printResultPrompt(result1)
-    printResultPrompt(result2)
+    val myLib = MyLibrary()
+    myLib.printTotalBook() // 0
+    myLib.addBook(5)
+    myLib.printTotalBook() // 5
 
+    val yourLib = MyLibrary()
+    yourLib.printTotalBook() // 5
+
+    println()
+    println()
+
+    // anonymous class
+    // using object
+
+    flyWithWings(object : IFly {
+        override fun fly() {
+            println("Fly to the moon")
+        }
+    })
+
+    printString(object {
+        val msg: String = "This is Message from Messiah"
+
+        override fun toString(): String {
+            return "Anonymous(msg: ${msg})"
+        }
+    })
+}
+
+interface IFly {
+    fun fly()
+}
+
+fun printString(obj: Any) {
+    println(obj.toString())
+}
+
+fun flyWithWings(bird: IFly) {
+    bird.fly()
 }
 
 fun printResultPrompt(result: Result) {
