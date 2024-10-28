@@ -4,6 +4,7 @@ import xyz.zaldev.model.data.House
 import xyz.zaldev.model.data.User
 import xyz.zaldev.model.data.UserData
 import xyz.zaldev.model.oop.Employee
+import xyz.zaldev.utils.common.Result
 import xyz.zaldev.utils.enum.Color
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -187,19 +188,43 @@ fun main() {
 //
 //    // error -> inner class must be called inside initialized parent class
 //    // var flooTile2 = House.FloorTile()
+//
+//    // enum
+//    var cRed = Color.RED
+//    var cGreen = Color.GREEN
+//    var cBlue = Color.BLUE
+//
+//    println("$cRed - $cGreen - $cBlue")
+//    println("${cRed.hexCode} - ${cGreen.hexCode} - ${cBlue.hexCode}")
+//
+//    println(cBlue.name) // BLUE
+//    println(cBlue.intCode) // 255
+//    println(cBlue.hexCode) // 0x0000FF
+//    println(cBlue.ordinal) // 2 -> order index start from 0
+//    cBlue.printValue()
 
-    // enum
-    var cRed = Color.RED
-    var cGreen = Color.GREEN
-    var cBlue = Color.BLUE
+    // sealed class
+    var result1: Result = Result.Success(listOf(1,2,3,4))
+    var result2: Result = Result.Error("Cannot fetch data")
 
-    println("$cRed - $cGreen - $cBlue")
-    println("${cRed.hexCode} - ${cGreen.hexCode} - ${cBlue.hexCode}")
+    println(result1)
+    println(result2)
 
-    println(cBlue.name) // BLUE
-    println(cBlue.intCode) // 255
-    println(cBlue.hexCode) // 0x0000FF
-    println(cBlue.ordinal) // 2 -> order index start from 0
-    cBlue.printValue()
+    printResultPrompt(result1)
+    printResultPrompt(result2)
 
+}
+
+fun printResultPrompt(result: Result) {
+    when(result) {
+        is Result.Success<*> -> {
+            println("The result is ${result.data}")
+        }
+        is Result.Error -> {
+            println("Error: ${result.message}")
+        }
+        is Result.Loading -> {
+            println("Loading ...")
+        }
+    }
 }
