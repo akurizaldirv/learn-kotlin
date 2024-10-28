@@ -45,6 +45,10 @@ infix fun Int.sumTenDeret(num: Int): Int {
 }
 
 fun main() {
+
+    var bebas = println("Bebas")
+    println(bebas)
+
 //    // object
 //    var kucing = Animal()
 //    kucing.eat()
@@ -88,19 +92,55 @@ fun main() {
 //
 //    kamboja.cut("Bono", 4)
 //    kamboja.cut(2, "Budi")
+//
+//    // inheritance ---
+//    val manager = ManajerEmpl("Muklis", 30000000L)
+//    val staff = StaffEmpl("Aigo", 5000000L)
+//
+//    // val animalError = Employee("asd", 1000L) // ---since it's abstract, the class cannot instantiated
+//    manager.workingHour = 20
+//    println(manager)
+//    println(staff)
+//    println(staff.die())
+//    println(staff.bill)
+//
+//    // infix extension using
+//    println(5 sumTenDeret 3)
+//
+    // error handling
+    val nullVal: String? = null
+    var intVal: Int = 0
+    var notNullVal: String = ""
 
-    // inheritance ---
-    val manager = ManajerEmpl("Muklis", 30000000L)
-    val staff = StaffEmpl("Aigo", 5000000L)
+    try {
+        intVal = nullVal!!.toInt()
+    } catch (e: NullPointerException) {
+        intVal = 0
+    } catch (e: NumberFormatException) {
+        intVal = -1
+    } finally {
+        when (intVal) {
+            -1 -> println("Catch by NumberFormatException")
+            0 -> println("Catch by NullPointerException")
+            else -> println(intVal)
+        }
+    }
 
-    // val animalError = Employee("asd", 1000L) // ---since it's abstract, the class cannot instantiated
-    manager.workingHour = 20
-    println(manager)
-    println(staff)
-    println(staff.die())
-    println(staff.bill)
-
-    // infix extension using
-    println(5 sumTenDeret 3)
+    println()
+    try {
+        notNullVal = nullVal ?: ""
+        if (notNullVal == "") {
+            throw NullPointerException("Null Wooy")
+        }
+    } catch (e: Exception) {
+        notNullVal = "nullVal"
+        println(e.message)
+        println(e.localizedMessage)
+        println(e.cause)
+        println(e.suppressed)
+        println(e.stackTrace)
+    } finally {
+        println("Eror: --- " + notNullVal)
+    }
 
 }
