@@ -248,10 +248,18 @@ fun main() {
             return "Anonymous(msg: ${msg})"
         }
     })
+
+    val isEven = IntPredicate {it % 2 == 0} // using lambda
+    println(isEven.accept(5))
+
 }
 
 interface IFly {
     fun fly()
+}
+
+fun interface IntPredicate {
+    fun accept(i: Int): Boolean
 }
 
 fun printString(obj: Any) {
