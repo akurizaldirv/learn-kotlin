@@ -1,5 +1,6 @@
 package xyz.zaldev
 
+import xyz.zaldev.model.data.House
 import xyz.zaldev.model.data.User
 import xyz.zaldev.model.data.UserData
 import xyz.zaldev.model.oop.Employee
@@ -142,31 +143,48 @@ fun main() {
 //    } finally {
 //        println("Eror: --- " + notNullVal)
 //    }
+//
+//    var user1 = User("Doni", 24)
+//    var userData1 = UserData("Aldo", 22)
+//
+//    var user2 = User("Doni", 24)
+//    var userData2 = UserData(age = 22, name = "Aldo")
+//
+//    // copy
+//    var userData3 = userData2.copy()
+//
+//    println(user1) // default -> show object reference
+//    println(userData1) // default -> show data
+//
+//    println(user1.hashCode()) // default -> hashcode
+//    println(userData1.hashCode()) // default -> show data
+//
+//    println(user1.equals(user2)) // false -> compare hashcode
+//    println(userData1.equals(userData3)) // true -> compare data
+//
+//    userData3.name = "Bukan Aldo"
+//    println(userData3.equals(userData2))
+//
+//    // component N (n is an index to access the properties in data class depends on property order)
+//    var name = userData2.component1()
+//    var age = userData2.component2()
+//    userData2.intro()
+//    println("Hello, my name is $name, and i am $age years old")
 
-    var user1 = User("Doni", 24)
-    var userData1 = UserData("Aldo", 22)
 
-    var user2 = User("Doni", 24)
-    var userData2 = UserData(age = 22, name = "Aldo")
+    // nested class
+    var house1 = House()
 
-    // copy
-    var userData3 = userData2.copy()
+    var room1 = House.Room()
+    println(room1.getRoomAreaM2())
 
-    println(user1) // default -> show object reference
-    println(userData1) // default -> show data
+    var floorTile1 = house1.FloorTile()
+    println(floorTile1.getTotalTile())
 
-    println(user1.hashCode()) // default -> hashcode
-    println(userData1.hashCode()) // default -> show data
+    // error -> default nested class must be called without initializing parent class
+    // var room2 = house1.Room()
 
-    println(user1.equals(user2)) // false -> compare hashcode
-    println(userData1.equals(userData3)) // true -> compare data
+    // error -> inner class must be called inside initialized parent class
+    // var flooTile2 = House.FloorTile()
 
-    userData3.name = "Bukan Aldo"
-    println(userData3.equals(userData2))
-
-    // component N (n is an index to access the properties in data class depends on property order)
-    var name = userData2.component1()
-    var age = userData2.component2()
-    userData2.intro()
-    println("Hello, my name is $name, and i am $age years old")
 }
