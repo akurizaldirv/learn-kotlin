@@ -1,14 +1,7 @@
 package xyz.zaldev
 
-import xyz.zaldev.model.CentralLibrary
-import xyz.zaldev.model.Database
-import xyz.zaldev.model.MyLibrary
-import xyz.zaldev.model.data.House
-import xyz.zaldev.model.data.User
-import xyz.zaldev.model.data.UserData
+import xyz.zaldev.model.oop.Car
 import xyz.zaldev.model.oop.Employee
-import xyz.zaldev.utils.common.Result
-import xyz.zaldev.utils.enum.Color
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -51,235 +44,31 @@ infix fun Int.sumTenDeret(num: Int): Int {
 }
 
 fun main() {
-//
-//    var bebas = println("Bebas")
-//    println(bebas)
+    // immutable
+    val mixList = listOf(1, "Hello", 'W', true, 2.4F, Car(
+        name = "Hyundai",
+        fuel = "Gasoline"
+    ))
+    val charList: List<Char> = listOf('A', 'B', 'C', 'D', 'E', 'F', 'G')
 
-//    // object
-//    var kucing = Animal()
-//    kucing.eat()
-//    println(kucing.name)
-//    kucing.name = "Bono"
-//    println(kucing.name)
-//    println(kucing.age)
-//    kucing.age = 20
-//    println(kucing.age)
-//    kucing.motherName = "Sumiati"
-//    println(kucing.motherName)
-//    println(kucing)
+//     mixList[1] = "World" // error
+    println(mixList)
+    println(charList)
+    println(mixList[3])
+    println(charList[2])
+    // mixList.add("Error") // throw error -- unresolved reference add
 
-    // primary constructor
-//    val toyota: Car = Car("Toyota Supra", 12000.0, "Gasoline")
-//    val mazda: Car = Car("Mazda RX8", fuel = "Electric", price = -12000.0) // named init
-//
-//    println(toyota)
-//    toyota.name = "Toyota Supra 2024"
-//    toyota.start()
-//    toyota.stop()
-//    println(toyota)
-//
-//    println(mazda)
+    // mutable
+    println("\n\nMutable List")
+    val gradeList = mutableListOf<Int>(90, 70, 60)
+    println(gradeList)
+    gradeList.add(95)
+    gradeList.add(75)
+    gradeList.add(1, 88)
+    gradeList.remove(60)
+    gradeList.removeAt(gradeList.size -1)
+    gradeList.add(77)
+    gradeList[0] = 99
+    println(gradeList)
 
-
-//    // instantiate using 3 different constructors
-//    val ganggang: Plant = Plant("Ganggang", "Algae", "Lorem ipsum", 1, false)
-//    println(ganggang)
-//
-//    val mangga: Plant = Plant(family = "Tree", name = "Mango", isExtinct = true)
-//    println(mangga)
-//
-//    val kamboja: Plant = Plant("Kamboja", "Algae", "Lorem ipsum", 1)
-//    println(kamboja)
-//    kamboja.setName("Kamboja X21")
-//    println(kamboja.getName())
-//
-//    kamboja.grow()
-//    kamboja.grow(5)
-//
-//    kamboja.cut("Bono", 4)
-//    kamboja.cut(2, "Budi")
-//
-//    // inheritance ---
-//    val manager = ManajerEmpl("Muklis", 30000000L)
-//    val staff = StaffEmpl("Aigo", 5000000L)
-//
-//    // val animalError = Employee("asd", 1000L) // ---since it's abstract, the class cannot instantiated
-//    manager.workingHour = 20
-//    println(manager)
-//    println(staff)
-//    println(staff.die())
-//    println(staff.bill)
-//
-//    // infix extension using
-//    println(5 sumTenDeret 3)
-////
-//    // error handling
-//    val nullVal: String? = null
-//    var intVal: Int = 0
-//    var notNullVal: String = ""
-//
-//    try {
-//        intVal = nullVal!!.toInt()
-//    } catch (e: NullPointerException) {
-//        intVal = 0
-//    } catch (e: NumberFormatException) {
-//        intVal = -1
-//    } finally {
-//        when (intVal) {
-//            -1 -> println("Catch by NumberFormatException")
-//            0 -> println("Catch by NullPointerException")
-//            else -> println(intVal)
-//        }
-//    }
-//
-//    println()
-//    try {
-//        notNullVal = nullVal ?: ""
-//        if (notNullVal == "") {
-//            throw NullPointerException("Null Wooy")
-//        }
-//    } catch (e: Exception) {
-//        notNullVal = "nullVal"
-//        println(e.message)
-//        println(e.localizedMessage)
-//        println(e.cause)
-//        println(e.suppressed)
-//        println(e.stackTrace)
-//    } finally {
-//        println("Eror: --- " + notNullVal)
-//    }
-//
-//    var user1 = User("Doni", 24)
-//    var userData1 = UserData("Aldo", 22)
-//
-//    var user2 = User("Doni", 24)
-//    var userData2 = UserData(age = 22, name = "Aldo")
-//
-//    // copy
-//    var userData3 = userData2.copy()
-//
-//    println(user1) // default -> show object reference
-//    println(userData1) // default -> show data
-//
-//    println(user1.hashCode()) // default -> hashcode
-//    println(userData1.hashCode()) // default -> show data
-//
-//    println(user1.equals(user2)) // false -> compare hashcode
-//    println(userData1.equals(userData3)) // true -> compare data
-//
-//    userData3.name = "Bukan Aldo"
-//    println(userData3.equals(userData2))
-//
-//    // component N (n is an index to access the properties in data class depends on property order)
-//    var name = userData2.component1()
-//    var age = userData2.component2()
-//    userData2.intro()
-//    println("Hello, my name is $name, and i am $age years old")
-
-//
-//    // nested class
-//    var house1 = House()
-//
-//    var room1 = House.Room()
-//    println(room1.getRoomAreaM2())
-//
-//    var floorTile1 = house1.FloorTile()
-//    println(floorTile1.getTotalTile())
-//
-//    // error -> default nested class must be called without initializing parent class
-//    // var room2 = house1.Room()
-//
-//    // error -> inner class must be called inside initialized parent class
-//    // var flooTile2 = House.FloorTile()
-//
-//    // enum
-//    var cRed = Color.RED
-//    var cGreen = Color.GREEN
-//    var cBlue = Color.BLUE
-//
-//    println("$cRed - $cGreen - $cBlue")
-//    println("${cRed.hexCode} - ${cGreen.hexCode} - ${cBlue.hexCode}")
-//
-//    println(cBlue.name) // BLUE
-//    println(cBlue.intCode) // 255
-//    println(cBlue.hexCode) // 0x0000FF
-//    println(cBlue.ordinal) // 2 -> order index start from 0
-//    cBlue.printValue()
-//
-//    // sealed class
-//    var result1: Result = Result.Success(listOf(1,2,3,4))
-//    var result2: Result = Result.Error("Cannot fetch data")
-//
-//    println(result1)
-//    println(result2)
-//
-//    printResultPrompt(result1)
-//    printResultPrompt(result2)
-
-
-    // singleton -- the object created only once
-    CentralLibrary.borrowBook(20)
-    Database.connect()
-
-    val myLib = MyLibrary()
-    myLib.printTotalBook() // 0
-    myLib.addBook(5)
-    myLib.printTotalBook() // 5
-
-    val yourLib = MyLibrary()
-    yourLib.printTotalBook() // 5
-
-    println()
-    println()
-
-    // anonymous class
-    // using object
-
-    flyWithWings(object : IFly {
-        override fun fly() {
-            println("Fly to the moon")
-        }
-    })
-
-    printString(object {
-        val msg: String = "This is Message from Messiah"
-
-        override fun toString(): String {
-            return "Anonymous(msg: ${msg})"
-        }
-    })
-
-    val isEven = IntPredicate {it % 2 == 0} // using lambda
-    println(isEven.accept(5))
-
-}
-
-interface IFly {
-    fun fly()
-}
-
-fun interface IntPredicate {
-    fun accept(i: Int): Boolean
-}
-
-fun printString(obj: Any) {
-    println(obj.toString())
-}
-
-fun flyWithWings(bird: IFly) {
-    bird.fly()
-}
-
-fun printResultPrompt(result: Result) {
-    when(result) {
-        is Result.Success<*> -> {
-            println("The result is ${result.data}")
-        }
-        is Result.Error -> {
-            println("Error: ${result.message}")
-        }
-        is Result.Loading -> {
-            println("Loading ...")
-        }
-    }
 }

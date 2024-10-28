@@ -1,6 +1,6 @@
 package xyz.zaldev.model.oop
 
-class Car (var name: String, var price: Double = 0.0, var fuel: String) {
+class Car(var name: String, var price: Double = 0.0, var fuel: String) {
     // menuliskan block body property ketika menggunakan primary constructor
     init {
         this.name = name
