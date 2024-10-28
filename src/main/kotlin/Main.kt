@@ -4,6 +4,7 @@ import xyz.zaldev.model.data.House
 import xyz.zaldev.model.data.User
 import xyz.zaldev.model.data.UserData
 import xyz.zaldev.model.oop.Employee
+import xyz.zaldev.utils.enum.Color
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -171,20 +172,34 @@ fun main() {
 //    userData2.intro()
 //    println("Hello, my name is $name, and i am $age years old")
 
+//
+//    // nested class
+//    var house1 = House()
+//
+//    var room1 = House.Room()
+//    println(room1.getRoomAreaM2())
+//
+//    var floorTile1 = house1.FloorTile()
+//    println(floorTile1.getTotalTile())
+//
+//    // error -> default nested class must be called without initializing parent class
+//    // var room2 = house1.Room()
+//
+//    // error -> inner class must be called inside initialized parent class
+//    // var flooTile2 = House.FloorTile()
 
-    // nested class
-    var house1 = House()
+    // enum
+    var cRed = Color.RED
+    var cGreen = Color.GREEN
+    var cBlue = Color.BLUE
 
-    var room1 = House.Room()
-    println(room1.getRoomAreaM2())
+    println("$cRed - $cGreen - $cBlue")
+    println("${cRed.hexCode} - ${cGreen.hexCode} - ${cBlue.hexCode}")
 
-    var floorTile1 = house1.FloorTile()
-    println(floorTile1.getTotalTile())
-
-    // error -> default nested class must be called without initializing parent class
-    // var room2 = house1.Room()
-
-    // error -> inner class must be called inside initialized parent class
-    // var flooTile2 = House.FloorTile()
+    println(cBlue.name) // BLUE
+    println(cBlue.intCode) // 255
+    println(cBlue.hexCode) // 0x0000FF
+    println(cBlue.ordinal) // 2 -> order index start from 0
+    cBlue.printValue()
 
 }
