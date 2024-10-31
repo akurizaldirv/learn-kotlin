@@ -159,6 +159,8 @@ fun main() {
     val takenGrade2 = gradeList.takeLast(3)
     println("Taken Grade 2: $takenGrade2")
 
+
+
     // take specified index from list
     println("-- Slice")
     val slicedGrade = gradeList.slice(1 .. 2) // slice index 1 to before index 2
@@ -194,7 +196,57 @@ fun main() {
     println("Splitted: $splittedName")
     println("Chunked: $chunkedName")
 
+    println()
+    val sequence = (1..10).asSequence()
 
+
+    // eager evaluation
+    // operate all items in the list (slice, distinct, chunked)
+    // list: (1,2,3)
+    // operations: map().filter().map()
+    // flow:
+    // (1, 2, 3).map()
+    // (1, 2, 3).filter( it >= 2) // (2, 3)
+    // (2, 3).map()
+
+
+
+    // lazy evaluation
+    // operate needed item in the list (convert to sequence first)
+    // suitable for large dataset
+    // sequence: (1,2,3)
+    // operations: map().filter().map()
+
+    // 1. map()
+    // 1. filter( it >= 2) // false -> will not continue to next chain
+
+    // 2. map()
+    // 2. filter( it >= 2 ) true
+    // 2. map()
+
+    // 3. map()
+    // 3. filter( it >= 2 ) true
+    // 3. map()
+
+    // Menerapkan operasi pada Sequence dengan println untuk melihat alur
+    val result = sequence
+        .map {
+            val result = it * 2
+            println("Mengalikan $it menjadi $result")
+            result
+        }
+        .filter {
+            println("Memeriksa apakah $it > 5")
+            it > 5
+        }
+        .map {
+            println("$it Dibagi 2")
+            it / 2
+        } // this .map() will not executed in lazy  if the value does not match the filter
+        .toList() // Mengonversi kembali ke List
+
+    println("Hasil akhir: $result") // Output: [6, 8, 10]
+    println()
 
     println()
 
