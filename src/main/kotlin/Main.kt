@@ -2,6 +2,7 @@ package xyz.zaldev
 
 import xyz.zaldev.model.oop.Car
 import xyz.zaldev.model.oop.Employee
+import kotlin.math.pow
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -45,34 +46,121 @@ infix fun Int.sumTenDeret(num: Int): Int {
 
 fun main() {
 //    // immutable
-    // List<*> is Immutable
-    // MutableList<*> is Mutable
+//    // List<*> is Immutable
+//    // MutableList<*> is Mutable
 
-//    val mixList = listOf(1, "Hello", 'W', true, 2.4F, Car(
-//        name = "Hyundai",
-//        fuel = "Gasoline"
-//    ))
-//    val charList: List<Char> = listOf('A', 'B', 'C', 'D', 'E', 'F', 'G')
-//
-//     // mixList[1] = "World" // error
-//    println(mixList)
-//    println(charList)
-//    println(mixList[3])
-//    println(charList[2])
-//    // mixList.add("Error") // throw error -- unresolved reference add
-//
-//    // mutable
-//    println("\n\nMutable List")
-//    val gradeList: MutableList<Int> = mutableListOf<Int>(90, 70, 60)
-//    println(gradeList)
-//    gradeList.add(95)
-//    gradeList.add(75)
-//    gradeList.add(1, 88)
-//    gradeList.remove(60)
-//    gradeList.removeAt(gradeList.size -1)
-//    gradeList.add(77)
-//    gradeList[0] = 99
-//    println(gradeList)
+    val mixList = listOf(1, "Hello", 'W', true, 2.4F, Car(
+        name = "Hyundai",
+        fuel = "Gasoline"
+    ))
+    val charList: List<Char> = listOf('A', 'B', 'C', 'D', 'E', 'F', 'G')
+
+     // mixList[1] = "World" // error
+    println(mixList)
+    println(charList)
+    println(mixList[3])
+    println(charList[2])
+    // mixList.add("Error") // throw error -- unresolved reference add
+
+    // mutable
+    println("\n\nMutable List")
+    val gradeList: MutableList<Int> = mutableListOf<Int>(90, 70, 60)
+    println(gradeList)
+    gradeList.add(95)
+    gradeList.add(75)
+    gradeList.add(1, 88)
+    gradeList.remove(60)
+    gradeList.removeAt(gradeList.size -1)
+    gradeList.add(77)
+    gradeList[0] = 99
+    println(gradeList)
+
+    // Collection Operation
+    println()
+    println("Collection")
+    println("-- Filter")
+    val evenGradeList: MutableList<Int> = gradeList.filter { it % 2 == 0 }.toMutableList()
+    val oddGradeList: MutableList<Int> = gradeList.filterNot { it % 2 == 0 }.toMutableList()
+    println("Even: $evenGradeList")
+    println("Odd: $oddGradeList")
+
+    println("-- Map")
+    val squaredGradeList: MutableList<Int> = gradeList.map { it.toDouble().pow(2).toInt() }.toMutableList()
+    println("Squared: $squaredGradeList")
+
+    println("-- Count")
+    val totalHighGrade: Int = gradeList.count {it >= 80}
+    println("Many High Grade: $totalHighGrade")
+
+    println("-- Find, First Or Null, Last Or Null")
+    val firstOddNumber: Int? = gradeList.find { it % 2 == 1 }
+    val firstEvenNumber: Int? = gradeList.firstOrNull { it % 2 == 0 }
+    val lastOddNumber: Int? = gradeList.lastOrNull {it % 2 == 1}
+    println("First Even Number: $firstEvenNumber")
+    println("First Odd Number: $firstOddNumber")
+    println("Last Odd Number: $lastOddNumber")
+
+    println("-- First, Last") // .first() and .last() throw exception when not found
+    val firstOddNumberNotNull: Int = gradeList.first { it % 2 == 1 }
+    println("First Even Number: $firstOddNumberNotNull")
+    try {
+        val lastOddNumberNotNUll: Int = gradeList.last {it % 2 == 3}
+        println("Last Odd Number: $lastOddNumberNotNUll")
+    } catch (e: Exception) {
+        println(e)
+    }
+
+    println("-- Sum")
+    val totalGrade: Int = gradeList.sum()
+    println("Total: $totalGrade")
+
+    println("-- Sorted")
+    val sortedGradeList: List<Int> = gradeList.sorted()
+    val sortedGradeListDesc: List<Int> = gradeList.sortedDescending()
+    println("Sorted: $sortedGradeList")
+    println("Sorted Descending: $sortedGradeListDesc")
+
+    // loop and calculate value to current parameter
+    println("-- Fold")
+    val sumSquaredGrade: Int = gradeList.fold(0) { current, item ->
+        println("Current $current")
+        println("Item $item")
+        current + (item * item)
+    }
+    println("Folded Result: $sumSquaredGrade")
+
+    // just like fold, but iterate items from last index
+    println("-- Fold Right")
+    val sumSquaredGrade2: Int = gradeList.foldRight(0) { item, current ->
+        println("Current $current")
+        println("Item $item")
+        current + (item * item)
+    }
+    println("Folded Result: $sumSquaredGrade2")
+
+    // drop n items from first index and return new list
+    println("-- drop")
+    val droppedGrade = gradeList.drop(3)
+    println("Dropped Grade: $droppedGrade")
+
+    // just like drop, but from last index
+    println("-- drop last")
+    val droppedGrade2 = gradeList.dropLast(3)
+    println("Dropped Grade 2: $droppedGrade2")
+
+    // take n items from first index
+    println("-- Take")
+    val takenGrade = gradeList.take(3)
+    println("Taken Grade: $takenGrade")
+
+    // just like take, but from last index
+    println("-- Take Last")
+    val takenGrade2 = gradeList.takeLast(3)
+    println("Taken Grade 2: $takenGrade2")
+
+
+    println()
+
 
 //
 //    // set
@@ -124,45 +212,45 @@ fun main() {
 //    println(intersection)
 //    println(symDiff.sorted())
 //    println(substract)
-
-    // Map
-    // Map<*> is Immutable
-    // MutableMap<*> is Mutable
-    val capital: Map<String, String> = mapOf(
-        "Jakarta" to "Indonesia",
-        "London" to "New York",
-        "New Delhi" to "India",
-        "Kuala Lumpur" to "Malaysia"
-    )
-    // printing Map Value
-    println(capital)
-    println(capital["Jakarta"])
-    println(capital["ASDASGDHASD"]) // printing null when no data found
-
-    println(capital.getValue("Jakarta"))
-    try {
-        // throw Exception when no data found
-        println(capital.getValue("ASDASGDHASD"))
-    } catch (e: Exception) {
-        println(e)
-        println(e.message)
-    }
-    println()
-    println(capital.keys) // returning Set
-    println(capital.values) // returning Collection
-    println(capital.size) // returning Int
-    for((key, value) in capital) {
-        println("$key is the Capital of $value")
-    }
-
-    println()
-    println("Mutable Map")
-    val mutableCapitals: MutableMap<String, String> = capital.toMutableMap()
-    val mutableTempCapitals: MutableMap<String, String> = mutableMapOf()
-    for ((key, value) in capital) {
-        mutableTempCapitals.put(value, key)
-    }
-    mutableCapitals.putAll(mutableTempCapitals)
-    println(mutableCapitals)
+//
+//    // Map
+//    // Map<*> is Immutable
+//    // MutableMap<*> is Mutable
+//    val capital: Map<String, String> = mapOf(
+//        "Jakarta" to "Indonesia",
+//        "London" to "New York",
+//        "New Delhi" to "India",
+//        "Kuala Lumpur" to "Malaysia"
+//    )
+//    // printing Map Value
+//    println(capital)
+//    println(capital["Jakarta"])
+//    println(capital["ASDASGDHASD"]) // printing null when no data found
+//
+//    println(capital.getValue("Jakarta"))
+//    try {
+//        // throw Exception when no data found
+//        println(capital.getValue("ASDASGDHASD"))
+//    } catch (e: Exception) {
+//        println(e)
+//        println(e.message)
+//    }
+//    println()
+//    println(capital.keys) // returning Set
+//    println(capital.values) // returning Collection
+//    println(capital.size) // returning Int
+//    for((key, value) in capital) {
+//        println("$key is the Capital of $value")
+//    }
+//
+//    println()
+//    println("Mutable Map")
+//    val mutableCapitals: MutableMap<String, String> = capital.toMutableMap()
+//    val mutableTempCapitals: MutableMap<String, String> = mutableMapOf()
+//    for ((key, value) in capital) {
+//        mutableTempCapitals.put(value, key)
+//    }
+//    mutableCapitals.putAll(mutableTempCapitals)
+//    println(mutableCapitals)
 
 }
