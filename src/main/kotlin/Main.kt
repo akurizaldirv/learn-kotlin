@@ -196,9 +196,6 @@ fun main() {
     println("Splitted: $splittedName")
     println("Chunked: $chunkedName")
 
-    println()
-    val sequence = (1..10).asSequence()
-
 
     // eager evaluation
     // operate all items in the list (slice, distinct, chunked)
@@ -227,6 +224,10 @@ fun main() {
     // 3. map()
     // 3. filter( it >= 2 ) true
     // 3. map()
+
+    println()
+    val sequence = (1..10).asSequence()
+
 
     // Menerapkan operasi pada Sequence dengan println untuk melihat alur
     val result = sequence
