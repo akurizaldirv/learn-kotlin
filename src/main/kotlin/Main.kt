@@ -1,5 +1,6 @@
 package xyz.zaldev
 
+import xyz.zaldev.model.data.Item
 import xyz.zaldev.model.oop.Car
 import xyz.zaldev.model.oop.Employee
 import kotlin.math.pow
@@ -157,6 +158,42 @@ fun main() {
     println("-- Take Last")
     val takenGrade2 = gradeList.takeLast(3)
     println("Taken Grade 2: $takenGrade2")
+
+    // take specified index from list
+    println("-- Slice")
+    val slicedGrade = gradeList.slice(1 .. 2) // slice index 1 to before index 2
+    println("Sliced Grade: $slicedGrade")
+
+    // remove duplicate value
+    println("-- Distinct")
+    val mutableGrade =  gradeList.toMutableList()
+    mutableGrade.addAll(listOf(22, 22, 22, 33, 44, 55, 44))
+    println("Duplicated Grade: $mutableGrade")
+    var distinctGrade = mutableGrade.distinct()
+    println("Distinct Grade: $distinctGrade")
+
+    // distinct by
+    println("Distinct By")
+    val itemList = listOf(
+        Item("1", "Budi"),
+        Item("1", "Buddha"),
+        Item("1", "Bubu"),
+        Item("2", "Chana"),
+        Item("2", "Coll"),
+        Item("3", "Doni"),
+        Item("1", "Budi")
+    )
+    val distinctItemList = itemList.distinctBy { it.key }
+    println("Distincted By: $distinctItemList")
+
+    // just like split, but took Int param
+    println("-- Chunked")
+    var studentName = "CADIS ETRAMA DI RAIZEL"
+    val splittedName = studentName.split(" ")
+    val chunkedName = studentName.replace(" ", "").chunked(3)
+    println("Splitted: $splittedName")
+    println("Chunked: $chunkedName")
+
 
 
     println()
